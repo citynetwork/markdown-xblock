@@ -185,9 +185,8 @@ class TestMarkdownXBlock(unittest.TestCase):
         with patch('markdown_xblock.html.get_xblock_settings') as get_settings_mock:
             get_settings_mock.return_value = settings
             fragment = block.student_view()
-            # in replace mode, "+" in URLs turns into whitespace
             self.assertIn(
-                '<a href="https://test.com/courses/course-v1:Org Class Version/about">test1</a>',
+                '<a href="https://test.com/courses/course-v1:Org+Class+Version/about">test1</a>',
                 fragment.content
             )
             self.assertIn(
@@ -210,9 +209,8 @@ class TestMarkdownXBlock(unittest.TestCase):
         with patch('markdown_xblock.html.get_xblock_settings') as get_settings_mock:
             get_settings_mock.return_value = settings
             fragment = block.student_view()
-            # in escape mode, "+" in URLs turns into whitespace
             self.assertIn(
-                '<a href="https://test.com/courses/course-v1:Org Class Version/about">test1</a>',
+                '<a href="https://test.com/courses/course-v1:Org+Class+Version/about">test1</a>',
                 fragment.content
             )
             self.assertIn(
